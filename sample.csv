@@ -1,0 +1,137 @@
+id,alt, url,name,phone,monday ,tuesday,wednesday,thursday,friday,saturday,sunday ,type,address,city,state,zip
+4,Store Image,,Ridgedale,9525440377,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,13513 Ridgedale Dr,Minnetonka,MN,55305
+7,Store Image,,Roseville,6517460538,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,1643 County Road B2,Roseville,MN,55113
+15,Store Image,,Oakdale Mn,6517391899,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,8301 3rd St N,Oakdale,MN,55128
+25,Store Image,,Southridge,4142813434,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,4610 S 76th St,Greenfield,WI,53220
+44,Store Image,,Bluemound Plaza,2627960669,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,19555 W Bluemound Rd,Milwaukee,WI,53045
+51,Store Image,,Wichita,3166845026,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,"2111 North Rock Rd, Ste 121",Wichita,KS,67206
+55,Store Image,,Hurst,8175954737,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,869 NE Mall Blvd,Hurst,TX,76053
+58,Store Image,,Park Lane,2146962089,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,9378 N Central Expy,Dallas,TX,75231
+101,Store Image,,Mission Viejo,9493670729,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,25422 El Paseo,Mission Viejo,CA,92691
+102,Store Image,,West Covina,6264805399,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1800 Plaza Drive,West Covina,CA,91790
+104,Store Image,,Hawthorne,3106449312,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,5000 W 147th St,Hawthorne,CA,90250
+109,Store Image,,West LA,3102689190,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,11301 W Pico Blvd.,Los Angeles,CA,90064
+118,Store Image,,Oxnard,8052789555,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"2300 N Rose Avenue
+",Oxnard,CA,93036
+119,Store Image,,Costa Mesa,7144340132,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,901 S Coast Drive Ste F,Costa Mesa,CA,92626
+120,Store Image,,Santa Rosa SWAS,7075451078,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,"1950 Santa Rosa Ave,  Santa Rosa Marketplace",Santa Rosa,CA,95407
+121,Store Image,,Fresno,5594460195,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,7550 North Blackstone Avenue,Fresno,CA,93720
+125,Store Image,,Pasadena SWAS,6263519516,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,3415 E.  Foothill Blvd.,Pasadena,CA,91107
+127,Store Image,,Lakewood,5625296500,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,5101 Clark Ave,Lakewood,CA,90712
+134,Store Image,,Dublin,9258297041,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,4820 Dublin Blvd.,Dublin,CA,94568
+135,Store Image,,Pleasant Hill,9259880256,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,3260 Buskirk Ave,Pleasant Hill,CA,94523
+137,Store Image,,Burbank SWAS,8188455121,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1501 N Victory Pl,Burbank,CA,91504
+141,Store Image,,Modesto,2095430117,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,3900 Sisk Rd,Modesto,CA,95356
+144,Store Image,,Union City,5104412130,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,31350 Courthouse Dr.,Union City,CA,94587
+146,Store Image,,Sterling,7034302150,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,"45575 Dulles Eastern Plz, Ste 188",Sterling,VA,20165
+148,Store Image,,Grapevine,8174429912,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,1515 W. State Highway #114,Grapevine,TX,76051
+149,Store Image,,Towson,4105612260,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1717 York Road,Timonium,MD,21093
+167,Store Image,,Woodlands,2812921355,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,10am - 8pm,swas,1550 Lake Woodlands Dr,The Woodlands,TX,77380
+178,Store Image,,Lakeline,5123362050,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,11066 Pecan Park Blvd,Cedar Park,TX,78613
+180,Store Image,,Frisco,9727123939,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,3333 Preston Road #200,Frisco,TX,75034
+181,Store Image,,Forum,2109452452,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,8210 Agora Pkwy,Selma,TX,78154
+183,Store Image,,Atwater Village,3239129288,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,2909 Los Feliz Blvd. ,Los Angeles,CA,90039
+188,Store Image,,Chula Vista,6164201187,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,59 N Broadway,Chula Vista,CA,91910
+190,Store Image,,Blossom Hill,4089791591,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,5065 Almaden Expy,San Jose,CA,95118
+198,Store Image,,Tucson,5207450209,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,6025 E Broadway Blvd,Tuscon,AZ,85711
+199,Store Image,,Sugar Land,2812401110,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,16980 Southwest Fwy,Sugar Land,TX,77479
+201,Store Image,,San Antonio,2103771116,9am - 9pm,9am - 9pm,9am - 9pm,9am - 9pm,9am - 10pm,9am - 10pm,11am - 8pm,swas,"125 Nw Loop 410, Ste 201",San Antonio,TX,78216
+202,Store Image,,Plano,9715788000,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,2800 N Central Expy,Plano,TX,75074
+203,Store Image,,North Austin,5127950014,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,9607 Research Blvd,Austin,TX,78759
+204,Store Image,,South Austin,5128927550,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,4970 US HWY 290 W,Austin,TX,78735
+208,Store Image,,West Madison,6088291188,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,7357 W Towne Way,Madison,WI,53719
+214,Store Image,,Willow Brook,2814445768,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,7318 Fm 1960 Rd W,Houston,TX,77070
+216,Store Image,,Katy Fwy,7136476004,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,10am - 8pm,swas,9670 Old Katy Rd,Houston,TX,77055
+218,Store Image,,Amarillo,8063560284,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,101 Westgate Pkwy,Amarillo,TX,79121
+221,Store Image,,Tulsa,9182506819,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,9am - 10pm,10am - 8pm,swas,10303 E 71st St,Tulsa,OK,74133
+235,Store Image,,Corpus Christi,3618578300,9am - 9pm,9am - 9pm,9am - 9pm,9am - 9pm,9am - 10pm,9am - 10pm,11am - 8pm,swas,4717 S Padre Island Dr,Corpus Christi,TX,78411
+239,Store Image,,W Oaks Tx,2814932365,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,10am - 8pm,swas,"2480 Highway 6 S, Village at West Oaks",Houston,TX,77077
+242,Store Image,,Bay Brook,2815543004,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,19425 Gulf Fwy,Webster,TX,77598
+251,Store Image,,Glendale (Arrowhead),6234862600,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,8290 West Bell Road,Glendale,AZ,85308
+255,Store Image,,Humble,2815403135,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,"20408 Highway 59 N, Dearbrook Power Center",Humble,TX,77338
+258,Store Image,,Lewisville,2144888624,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,2601 S Stemmons Fwy,Lewisville,TX,75067
+263,Store Image,,Columbia,4108729448,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,8251 Gateway Overlook Dr,Elkridge,MD,21075
+269,Store Image,,Springfield Mall,7039224980,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,6555 Frontier Dr,Springfield,VA,22150
+273,Store Image,,Fairlakes,7036313332,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,13058 Fairlakes Shopping Ctr,Fairfax,VA,22033
+280,Store Image,,Midland,4326872051,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,2511 W Loop 250 N,Midland,TX,79705
+281,Store Image,,Richfield,6128613917,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,1000 W 78th Street,Richfield,MN,55423
+287,Store Image,,Potomac Mills,7034907499,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,2730 Prince William Pkwy,Woodbridge,VA,22192
+291,Store Image,,Galleria Tx,7135521512,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,10am - 8pm,swas,5133 Richmond Ave,Houston,TX,77056
+293,Store Image,,Rockville,3019841479,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1200 Rockville Pike,Rockville,MD,20852
+301,Store Image,,Butterfield Road,6306209040,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,1432 Butterfield Rd,Downers Grove,IL,60515
+304,Store Image,,Bloomingdale,6305821070,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,350 W Army Trail Rd,Bloomingdale,IL,60108
+305,Store Image,,Schaumburg,8478433515,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,900 E Golf Rd,Schaumburg,IL,60173
+307,Store Image,,Joliet,8882293770,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,3351 Mall Loop Dr,Joliet,IL,60431
+310,Store Image,,Naperville,6308510122,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,"4400 E New York St, Yorkshire Plaza",Aurora,IL,60504
+318,Store Image,,Vernon Hills,8475499616,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,"701 N Milwaukee Ave, Ste 152",Vernon Hills,IL,60061
+329,Store Image,,Maple Grove,7634166300,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,12905 Elm Creek Blvd N,Maple Grove,MN,55369
+347,Store Image,,Lafayette,3372160501,9am - 9pm,9am - 9pm,9am - 9pm,9am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,5635 Johnston St,Lafayette,LA,70503
+349,Store Image,,Elk Grove,9166919784,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,9131 Stockton Blvd. ,Elk Grove,CA,95758
+354,Store Image,,Fry Road,2813982938,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,9am - 10pm,10am - 8pm,swas,20290 Katy Fwy,Katy,TX,77449
+358,Store Image,,Henderson,7024345536,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,611 Marks St,Henderson,NV,89014
+393,Store Image,,West Hollywood,3238830219,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1015 N La Brea Ave ,West Hollywood,CA,90038
+427,Store Image,,Frederick,3016626130,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,7300 Guilford Dr,Frederick,MD,21704
+437,Store Image,,Oceanside,7604393210,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,2110 Vista Way,Oceanside,CA,92054
+438,Store Image,,Mission Valley,6195741076,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,5151 Mission Center Road,San Diego,CA,92108
+448,Store Image,,Plymouth Meeting,6105672835,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,2010 Chemical Rd,Plymouth Meeting,PA,19462
+462,Store Image,,Citrus Park,8137921707,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,12675 Citrus Plaza Dr,Tampa,FL,33625
+465,Store Image,,Concord Pike,3024770305,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,4807 Concord Pike,Wilmington,DE,19803
+495,Store Image,,Baton Rouge,2257618032,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,10am - 8pm,swas,5913 Bluebonnet Blvd,Baton Rouge,LA,70836
+499,Store Image,,Bay Bridge,5104200323,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,3700 Mandela Pkwy,Oakland,CA,94608
+552,Store Image,,West Kendall,3052758338,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,12495 Sw 88th St,Miami,FL,33186
+554,Store Image,,Boca Raton,5614775367,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"20540 State Road 7, Shadowood Square",Boca Raton,FL,33498
+557,Store Image,,Dadeland,3056627073,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"8450 S Dixie Hwy, Dadeland Station",Miami,FL,33143
+559,Store Image,,Pembroke Pines,9544416135,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,11450 Pines Blvd,Pembroke Pines,FL,33026
+560,Store Image,,Brandon,8136431700,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"116 Grand Regency Blvd, Regency Square",Brandon,FL,33510
+561,Store Image,,South Tampa,8138748814,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1725 N Dale Mabry Hwy,Tampa,FL,22607
+562,Store Image,,Sarasota,9419233955,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"4020 S Tamiami Trl, Glengarry Shoppes",Sarasota,FL,34231
+565,Store Image,,St Petersburg,7273815223,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,6600 22nd Avenue N,Saint Petersburg,FL,33710
+572,Store Image,,Veterans Blvd,5047800172,9am - 9pm,9am - 9pm,9am - 9pm,9am - 9pm,9am - 10pm,9am - 10pm,10am - 8pm,swas,6205 Veterans Memorial Blvd,Metairie,LA,70003
+577,Store Image,,Oxford Valley,2159493006,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"310 Commerce Blvd, The Court At Oxford Valley",Fairless Hills,PA,19030
+579,Store Image,,Deptford,8563740404,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,1851 Deptford Center Rd,Deptford,NJ,8096
+580,Store Image,,Reading,6103753340,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"1701 Crossing Dr, Berkshire Crossing",Wyomissing,PA,19610
+582,Store Image,,Springfield,6106047474,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,642 Baltimore Pike,Springfield,PA,19064
+583,Store Image,,Mount Laurel,8566081600,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,"1420 Nixon Dr, Eastgate Square",Mount Laurel,NJ,8054
+611,Store Image,,Eden Prairie,9529415149,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,11600 Leona Dr,Eden Prairie,MN,55344
+646,Store Image,,Quail Springs,4057520295,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,9am - 10pm,10am - 8pm,swas,2135 W Memorial Rd,Oklahoma City,OK,73134
+763,Store Image,,Honolulu,8085257182,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,478 Alakawa St.,Honolulu,HI,96817
+808,Store Image,,Boynton Beach,5617521948,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,550 N Congress Ave,Boynton Beach,FL,33426
+819,Store Image,,Germantown,2406861221,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,20914 Frederick Road,Germantown,MD,20876
+851,Store Image,,Santana Row,4082416040,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,3090 Stevens Creek Blvd,San Jose,CA,95128
+852,Store Image,,Aiea,8084856940,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,98-051 Kamehameha Hwy,Aiea,HI,96701
+856,Store Image,,Bakersfield,6615870675,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,8300 Rosedale Hwy,Bakersfield,CA,93312
+864,Store Image,,North Rim,2106940574,9am - 9pm,9am - 9pm,9am - 9pm,9am - 9pm,9am - 10pm,9am - 10pm,11am - 8pm,swas,"17414 La Cantera, Ste 106",San Antonio,TX,78257
+869,Store Image,,Chandler ,4087921680,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,3100 W Frye Rd,Chandler,AZ,85226
+870,Store Image,,North Scottsdale,4805566707,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 8pm,swas,15549 N. Hayden Road,Scottsdale,AZ,85260
+873,Store Image,,Colma,6507568711,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,200 Colma Blvd.,Colma,CA,94014
+1044,Store Image,,SW Las Vegas,7022608707,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,11am - 8pm,swas,6950 Arroyo Crossing Pkwy,Las Vegas,NV,89113
+1082,Store Image,,Legacy,2015452258,10am - 9pm,10am - 9pm,10am - 9pm,10am - 9pm,10am - 10pm,10am - 10pm,11am - 8pm,swas,2003 N Loop 1604 E,San Antonio,TX,78232
+1701,Store Image,,Brea,7149842700,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,2750 E. Saturn Street,Brea,CA,92821
+1703,Store Image,,Cerritos,5628097959,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,12731 Towne Center Drive,Cerritos,CA,90703
+1704,Store Image,,Irvine,9496232500,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,2592 White Road,Irvine,CA,92614
+1705,Store Image,,Rancho Mirage,7607706400,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,34295 Monterey Ave,Rancho Mirage,CA,92270
+1706,Store Image,,San Juan,9492345700,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,32501 Calle Perfecto,San Juan Capistrano,CA,92675
+1707,Store Image,,Torrance,3107846100,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,24120 Garnier St,Torrance,CA,90505
+1709,Store Image,,Burbank,8183912800,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,530 N. Victory Blvd.,Burbank,CA,91502
+1710,Store Image,,Carlsbad,7608272200,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,6100 Paseo Del Norte,Carlsbad,CA,92011
+1711,Store Image,,Corona,9092715600,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,1385 Pico Street,Corona,CA,92881
+1712,Store Image,,Rancho Bernardo (Escondido),7607407099,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,1138 W Valley Pkwy,Escondido,CA,92025
+1713,Store Image,,San Dimas,9095920223,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,511 West Arrow Hwy.,San Dimas,CA,91773
+1714,Store Image,,Temecula,9512969917,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,40480 Winchester Road ,Temecula,CA,92591
+1715,Store Image,,Woodland Hills,8187372900,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,6100 Variel Ave,Woodland Hills,CA,91367
+1716,Store Image,,Ontario,9099197540,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,"5250 Ontario Mills Pkwy, Ste. 400",Ontario,CA,91764
+1717,Store Image,,Huntington Beach,7148891460,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,"15272 Bolsa Chica Rd, Ste 102",Huntington Beach,CA,92649
+1718,Store Image,,La Jolla,8586843660,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,7069 Consolidated Way Ste 100,San Diego,CA,92121
+1720,Store Image,,Thousand Oaks,8052142600,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,2000 Anchor Court,Thousand Oaks,CA,91320
+1721,Store Image,,Valencia,6612944400,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,29011 The Old Road,Valencia,CA,91355
+1722,Store Image,,Mission Valley (Moreno Blvd.),6196814800,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,920 Morena Blvd,San Diego,CA,92110
+1724,Store Image,,Chatsworth,8184076760,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,9330 N Winnetka Ave,Chatsworth,CA,91311
+1725,Store Image,,Blossom Hill,4082242399,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,634 Blossom Hill  Rd.,San Jose,CA,95123
+1727,Store Image,,SanRafael,4154826439,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,655 Irwin Street,San Rafael,CA,94901
+1728,Store Image,,Santa Rosa,7075782539,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,2835 Santa Rosa Ave,Santa Rosa,CA,95407
+1733,Store Image,,Concord,9252461199,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,"1150 Concord Ave, Ste 150",Concord,CA,94520
+1734,Store Image,,Redwood City,6503817199,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,240 Walnut Street,Redwood City,CA,94063
+1735,Store Image,,Goleta,8055621540,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,7127 Hollister Ave Suite 28,Goleta,CA,93117
+1736,Store Image,,San Francisco,4155581439,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,975 Bryant Street,San Francisco,CA,94103
+1737,Store Image,,Pasadena SAS,6263563359,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,440 South Lake Ave.,Pasadena,CA,91101
+1738,Store Image,,Roseville,9167916899,closed,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,closed,sas,1251 Lead Hill Blvd.,Roseville,CA,95661

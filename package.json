@@ -1,0 +1,15 @@
+{
+  "name": "store-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dustjs-linkedin": "^2.7.1",
+    "express": "^4.12.4"
+  }
+}

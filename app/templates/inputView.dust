@@ -1,0 +1,5 @@
+<h1>Upload your CSV file here!</h1>
+<form id="upload">
+  <input type="file" class="file-upload" id="csv"/>
+  <button class="do-upload">Parse My file</button>
+</form>

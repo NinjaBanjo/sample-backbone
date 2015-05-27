@@ -5,7 +5,7 @@ var Stores = require('../collections/Stores');
 
 var InputView = Backbone.View.extend({
   _parseCsvToArray: function (csvData) {
-    Stores.add(
+    Stores.reset(
       csvData.split("\n")
         .map(function (e, i, a) {
           // Skip the first entry
@@ -38,7 +38,6 @@ var InputView = Backbone.View.extend({
           return !(typeof e === "undefined");
         })
     );
-    debugger;
   },
   _readFileText: function (file, cb) {
     var fileReader = new FileReader();
@@ -69,7 +68,7 @@ var InputView = Backbone.View.extend({
     }
     // Call to our capture function and pass it the form file=
     this._readFileText(file, function (csvData) {
-      console.log(this._parseCsvToArray(csvData));
+      this._parseCsvToArray(csvData);
     }.bind(this));
 
   },
@@ -77,7 +76,8 @@ var InputView = Backbone.View.extend({
     var that = this;
     inputTemplate({}, function (err, html) {
       that.$el.html(html);
-    })
+    });
+    return this;
   }
 });
 

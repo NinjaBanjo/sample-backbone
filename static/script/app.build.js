@@ -7,16 +7,17 @@ var Stores = Backbone.Collection.extend({
 });
 
 module.exports = new Stores();
-},{"../models/Store":3,"backbone":5}],2:[function(require,module,exports){
+},{"../models/Store":3,"backbone":6}],2:[function(require,module,exports){
 var jQuery = require('jquery').noConflict();
 var _ = require('lodash');
 var Backbone = require('backbone');
 
 var InputView = require('./views/inputView');
+var DataView = require('./views/dataView');
 
-var inputView = new InputView();
-inputView.render();
-},{"./views/inputView":9,"backbone":5,"jquery":6,"lodash":7}],3:[function(require,module,exports){
+new InputView().render();
+new DataView().render();
+},{"./views/dataView":10,"./views/inputView":11,"backbone":6,"jquery":7,"lodash":8}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Store = Backbone.Model.extend({
@@ -42,13 +43,19 @@ var Store = Backbone.Model.extend({
 });
 
 module.exports = Store;
-},{"backbone":5}],4:[function(require,module,exports){
+},{"backbone":6}],4:[function(require,module,exports){
+(function() {
+var dust = require('dustjs-linkedin');
+(function(){dust.register("app/templates/dataView",body_0);function body_0(chk,ctx){return chk.s(ctx.get(["stores"], false),ctx,{"block":body_1},{});}body_0.__dustBody=!0;function body_1(chk,ctx){return chk.w("<tr><td>").f(ctx.get(["id"], false),ctx,"h").w("</td><td>").f(ctx.get(["alt"], false),ctx,"h").w("</td><td>").f(ctx.get(["url"], false),ctx,"h").w("</td><td>").f(ctx.get(["name"], false),ctx,"h").w("</td><td>").f(ctx.get(["phone"], false),ctx,"h").w("</td><td>Monday: ").f(ctx.get(["monday"], false),ctx,"h").w("<br>Tuesday: ").f(ctx.get(["tuesday"], false),ctx,"h").w(" <br>Wednseday: ").f(ctx.get(["wednesday"], false),ctx,"h").w("<br> Thursday: ").f(ctx.get(["thursday"], false),ctx,"h").w("<br> Friday: ").f(ctx.get(["friday"], false),ctx,"h").w("<br>Saturday: ").f(ctx.get(["saturday"], false),ctx,"h").w("<br>Sunday: ").f(ctx.get(["sunday"], false),ctx,"h").w("</td><td>").f(ctx.get(["type"], false),ctx,"h").w("</td><td>").f(ctx.get(["address"], false),ctx,"h").w("</td><td>").f(ctx.get(["address"], false),ctx,"h").w("</td><td>").f(ctx.get(["city"], false),ctx,"h").w("</td><td>").f(ctx.get(["state"], false),ctx,"h").w("</td><td>").f(ctx.get(["zip"], false),ctx,"h").w("</td></tr>");}body_1.__dustBody=!0;return body_0;})();module.exports = function (context, callback) { dust.render("app/templates/dataView", context, callback); };
+}).call(this);
+
+},{"dustjs-linkedin":12}],5:[function(require,module,exports){
 (function() {
 var dust = require('dustjs-linkedin');
 (function(){dust.register("app/templates/inputView",body_0);function body_0(chk,ctx){return chk.w("<h1>Upload your CSV file here!</h1><form id=\"upload\"><input type=\"file\" class=\"file-upload\" id=\"csv\"/><button class=\"do-upload\">Parse My file</button></form>");}body_0.__dustBody=!0;return body_0;})();module.exports = function (context, callback) { dust.render("app/templates/inputView", context, callback); };
 }).call(this);
 
-},{"dustjs-linkedin":10}],5:[function(require,module,exports){
+},{"dustjs-linkedin":12}],6:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.0
 
@@ -1920,7 +1927,7 @@ var dust = require('dustjs-linkedin');
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":6,"underscore":8}],6:[function(require,module,exports){
+},{"jquery":7,"underscore":9}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.11.1
  * http://jquery.com/
@@ -12230,7 +12237,7 @@ return jQuery;
 
 }));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -24469,7 +24476,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -26019,7 +26026,31 @@ return jQuery;
   }
 }.call(this));
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+var $ = require('jquery');
+var _ = require('lodash');
+var Backbone = require('backbone');
+var Stores = require('../collections/Stores');
+var dataTemplate = require('../templates/dataView.dust');
+
+var DataView = Backbone.View.extend({
+  el: $('.data-table'),
+  template: dataTemplate,
+  initialize: function () {
+    _.bindAll(this, 'renderTemplate');
+    Stores.on('reset', this.render, this);
+  },
+  render: function () {
+    dataTemplate({stores: Stores.toJSON()}, this.renderTemplate);
+    return this;
+  },
+  renderTemplate: function (err, html) {
+    this.$el.html(html);
+  }
+});
+
+module.exports = DataView;
+},{"../collections/Stores":1,"../templates/dataView.dust":4,"backbone":6,"jquery":7,"lodash":8}],11:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var inputTemplate = require('../templates/inputView.dust');
@@ -26027,7 +26058,7 @@ var Stores = require('../collections/Stores');
 
 var InputView = Backbone.View.extend({
   _parseCsvToArray: function (csvData) {
-    Stores.add(
+    Stores.reset(
       csvData.split("\n")
         .map(function (e, i, a) {
           // Skip the first entry
@@ -26060,7 +26091,6 @@ var InputView = Backbone.View.extend({
           return !(typeof e === "undefined");
         })
     );
-    debugger;
   },
   _readFileText: function (file, cb) {
     var fileReader = new FileReader();
@@ -26091,7 +26121,7 @@ var InputView = Backbone.View.extend({
     }
     // Call to our capture function and pass it the form file=
     this._readFileText(file, function (csvData) {
-      console.log(this._parseCsvToArray(csvData));
+      this._parseCsvToArray(csvData);
     }.bind(this));
 
   },
@@ -26099,12 +26129,13 @@ var InputView = Backbone.View.extend({
     var that = this;
     inputTemplate({}, function (err, html) {
       that.$el.html(html);
-    })
+    });
+    return this;
   }
 });
 
 module.exports = InputView;
-},{"../collections/Stores":1,"../templates/inputView.dust":4,"backbone":5,"jquery":6}],10:[function(require,module,exports){
+},{"../collections/Stores":1,"../templates/inputView.dust":5,"backbone":6,"jquery":7}],12:[function(require,module,exports){
 (function (process){
 (function (root, factory) {
   /*global define*/
@@ -27219,7 +27250,7 @@ module.exports = InputView;
 }));
 
 }).call(this,require('_process'))
-},{"_process":11}],11:[function(require,module,exports){
+},{"_process":13}],13:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

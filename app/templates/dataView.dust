@@ -1,0 +1,16 @@
+{#stores}
+    <tr>
+        <td>{id}</td>
+        <td>{alt}</td>
+        <td>{url}</td>
+        <td>{name}</td>
+        <td>{phone}</td>
+        <td>Monday: {monday}<br>Tuesday: {tuesday} <br>Wednseday: {wednesday}<br> Thursday: {thursday}<br> Friday: {friday}<br>Saturday: {saturday}<br>Sunday: {sunday}</td>
+        <td>{type}</td>
+        <td>{address}</td>
+        <td>{address}</td>
+        <td>{city}</td>
+        <td>{state}</td>
+        <td>{zip}</td>
+    </tr>
+{/stores}

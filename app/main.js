@@ -3,6 +3,7 @@ var _ = require('lodash');
 var Backbone = require('backbone');
 
 var InputView = require('./views/inputView');
+var DataView = require('./views/dataView');
 
-var inputView = new InputView();
-inputView.render();
+new InputView().render();
+new DataView().render();

@@ -1,3 +1,5 @@
+<table>
+<tr><th>ID</th><th>Alt</th><th>URL</th><th>Name</th><th>Phone</th><th>Hours</th><th>Type</th><th>Address</th><th>City</th><th>State</th><th>ZIP</th></tr>
 {#stores}
     <tr>
         <td>{id}</td>
@@ -8,9 +10,9 @@
         <td>Monday: {monday}<br>Tuesday: {tuesday} <br>Wednseday: {wednesday}<br> Thursday: {thursday}<br> Friday: {friday}<br>Saturday: {saturday}<br>Sunday: {sunday}</td>
         <td>{type}</td>
         <td>{address}</td>
-        <td>{address}</td>
         <td>{city}</td>
         <td>{state}</td>
         <td>{zip}</td>
     </tr>
 {/stores}
+</table>

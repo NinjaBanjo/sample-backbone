@@ -1,4 +1,13 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Backbone = require('backbone');
+var Store = require('../models/Store');
+
+var Stores = Backbone.Collection.extend({
+  model: Store
+});
+
+module.exports = new Stores();
+},{"../models/Store":3,"backbone":5}],2:[function(require,module,exports){
 var jQuery = require('jquery').noConflict();
 var _ = require('lodash');
 var Backbone = require('backbone');
@@ -7,13 +16,39 @@ var InputView = require('./views/inputView');
 
 var inputView = new InputView();
 inputView.render();
-},{"./views/inputView":7,"backbone":3,"jquery":4,"lodash":5}],2:[function(require,module,exports){
+},{"./views/inputView":9,"backbone":5,"jquery":6,"lodash":7}],3:[function(require,module,exports){
+var Backbone = require('backbone');
+
+var Store = Backbone.Model.extend({
+  defaults: {
+    id: undefined,
+    alt: undefined,
+    url: undefined,
+    name: undefined,
+    phone: undefined,
+    monday: undefined,
+    tuesday: undefined,
+    wednesday: undefined,
+    thursday: undefined,
+    friday: undefined,
+    saturday: undefined,
+    sunday: undefined,
+    type: undefined,
+    address: undefined,
+    city: undefined,
+    state: undefined,
+    zip: undefined
+  }
+});
+
+module.exports = Store;
+},{"backbone":5}],4:[function(require,module,exports){
 (function() {
 var dust = require('dustjs-linkedin');
 (function(){dust.register("app/templates/inputView",body_0);function body_0(chk,ctx){return chk.w("<h1>Upload your CSV file here!</h1><form id=\"upload\"><input type=\"file\" class=\"file-upload\" id=\"csv\"/><button class=\"do-upload\">Parse My file</button></form>");}body_0.__dustBody=!0;return body_0;})();module.exports = function (context, callback) { dust.render("app/templates/inputView", context, callback); };
 }).call(this);
 
-},{"dustjs-linkedin":8}],3:[function(require,module,exports){
+},{"dustjs-linkedin":10}],5:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.0
 
@@ -1885,7 +1920,7 @@ var dust = require('dustjs-linkedin');
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":4,"underscore":6}],4:[function(require,module,exports){
+},{"jquery":6,"underscore":8}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.11.1
  * http://jquery.com/
@@ -12195,7 +12230,7 @@ return jQuery;
 
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -24434,7 +24469,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -25984,26 +26019,81 @@ return jQuery;
   }
 }.call(this));
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 var inputTemplate = require('../templates/inputView.dust');
+var Stores = require('../collections/Stores');
 
 var InputView = Backbone.View.extend({
+  _parseCsvToArray: function (csvData) {
+    Stores.add(
+      csvData.split("\n")
+        .map(function (e, i, a) {
+          // Skip the first entry
+          if (i < 1) {
+            return undefined
+          }
+          // Split into parts and return an object with each of the attributes
+          var info = e.split(',');
+          return {
+            id: info[0],
+            alt: info[1],
+            url: info[2],
+            name: info[3],
+            phone: info[4],
+            monday: info[5],
+            tuesday: info[6],
+            wednesday: info[7],
+            thursday: info[8],
+            friday: info[9],
+            saturday: info[10],
+            sunday: info[11],
+            type: info[12],
+            address: info[13],
+            city: info[14],
+            state: info[15],
+            zip: info[16]
+          };
+        })
+        .filter(function (e, i, a) {
+          return !(typeof e === "undefined");
+        })
+    );
+    debugger;
+  },
+  _readFileText: function (file, cb) {
+    var fileReader = new FileReader();
+
+    fileReader.onload = function () {
+      cb(fileReader.result);
+    };
+
+    fileReader.readAsText(file);
+  },
   tagName: 'div',
   el: $('.input-container'),
   events: {
     'click .do-upload': 'doUpload'
   },
-  _parseCsvToArray: function (csv) {
-
-  },
   doUpload: function (e) {
     // Don't submit the form, because button defaults are stupid
     e.preventDefault();
+    // Get the file object and check to make sure it's a csv
+    var file = this.$el.find('input')[0].files[0];
+    if (typeof file === "undefined") {
+      alert('Please choose a file!');
+      return;
+    }
+    if (file.type !== "text/csv") {
+      alert('Only csv files are allowed, sorry.');
+      return;
+    }
+    // Call to our capture function and pass it the form file=
+    this._readFileText(file, function (csvData) {
+      console.log(this._parseCsvToArray(csvData));
+    }.bind(this));
 
-    // Call to our capture function and pass it the form file
-    debugger;
   },
   render: function () {
     var that = this;
@@ -26014,7 +26104,7 @@ var InputView = Backbone.View.extend({
 });
 
 module.exports = InputView;
-},{"../templates/inputView.dust":2,"backbone":3,"jquery":4}],8:[function(require,module,exports){
+},{"../collections/Stores":1,"../templates/inputView.dust":4,"backbone":5,"jquery":6}],10:[function(require,module,exports){
 (function (process){
 (function (root, factory) {
   /*global define*/
@@ -27129,7 +27219,7 @@ module.exports = InputView;
 }));
 
 }).call(this,require('_process'))
-},{"_process":9}],9:[function(require,module,exports){
+},{"_process":11}],11:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -27221,4 +27311,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[1]);
+},{}]},{},[2]);

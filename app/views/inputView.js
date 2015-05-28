@@ -6,6 +6,11 @@ var inputTemplate = require('../templates/inputView.dust');
 var Stores = require('../collections/Stores');
 
 var InputView = Backbone.View.extend({
+  tagName: 'div',
+  el: $('.input-container'),
+  events: {
+    'click .do-upload': 'doUpload'
+  },
   _getGeoLocationForObjects: function (objects) {
     return new Promise(function (resolve) {
       // Do geo stuff here
@@ -13,26 +18,31 @@ var InputView = Backbone.View.extend({
       // we use map so it only runs one at a time and cuncurrency so it waits for the previous before calling the next one
       Promise.map(objects, function (item) {
         return new Promise(function (resolve) {
-          var address = item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip;
-          Promise.delay(1000)
-            .then(function () {
-              Geocoder.geocode({address: address}, function (result) {
-                if (result !== null && typeof result[0] !== "undefined") {
-                  item.lat = result[0].geometry.location.A;
-                  item.lon = result[0].geometry.location.F;
-                } else {
-                  item.lat = null;
-                  item.lon = null;
-                }
+          var callTime = new Date(),
+            finishTime = new Date(callTime.getTime() + 0.12 * 60000),
+            address = item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip;
+          Geocoder.geocode({address: address}, function (result) {
+            if (result !== null && typeof result[0] !== "undefined") {
+              item.lat = result[0].geometry.location.A;
+              item.lon = result[0].geometry.location.F;
+            } else {
+              item.lat = null;
+              item.lon = null;
+            }
+            var checkTime = setInterval(function () {
+              var now = new Date();
+              if (now.getTime() >= finishTime.getTime()) {
+                clearTimeout(checkTime);
                 resolve(item);
-              });
-            });
+              }
+            }, 500);
+          });
         });
-      }, {concurrency: 1})
+      }, {concurrency: 5})
         .then(function (processedObjects) {
           resolve(processedObjects);
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log(err);
         });
     });
@@ -84,11 +94,6 @@ var InputView = Backbone.View.extend({
       fileReader.readAsText(file);
     });
   },
-  tagName: 'div',
-  el: $('.input-container'),
-  events: {
-    'click .do-upload': 'doUpload'
-  },
   doUpload: function (e) {
     // Don't submit the form, because button defaults are stupid
     e.preventDefault();
@@ -103,11 +108,18 @@ var InputView = Backbone.View.extend({
       return;
     }
     // Call to our capture function and pass it the form file=
+    var workingNode = document.querySelector('.working');
+    workingNode.style.display = 'inline-block';
+    var startTime = new Date();
     this._readFileText(file)
       .then(this._parseCsvToObject)
       .then(this._getGeoLocationForObjects)
-      .then(function(result){
-        StorZ
+      .then(function (result) {
+        Stores.reset(result);
+        workingNode.style.display = '';
+        var endTime = new Date();
+        var timeTaken = new Date(startTime.getTime() - endTime.getTime());
+        console.log('Time Taken: ' + timeTaken.getSeconds());
       });
 
   },

@@ -17,7 +17,7 @@ var DataView = require('./views/dataView');
 
 new InputView().render();
 new DataView().render();
-},{"./views/dataView":11,"./views/inputView":12,"backbone":6,"jquery":8,"lodash":9}],3:[function(require,module,exports){
+},{"./views/dataView":12,"./views/inputView":13,"backbone":6,"jquery":9,"lodash":10}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Store = Backbone.Model.extend({
@@ -51,13 +51,13 @@ var dust = require('dustjs-linkedin');
 (function(){dust.register("app/templates/dataView",body_0);function body_0(chk,ctx){return chk.w("<h2>Download as JSON</h2><a href=\"").f(ctx.get(["downloadURI"], false),ctx,"h").w("\" download=\"data.json\">NOW</a><table><tr><th>ID</th><th>Alt</th><th>URL</th><th>Name</th><th>Phone</th><th>Hours</th><th>Type</th><th>Address</th><th>City</th><th>State</th><th>ZIP</th><th>lat/lon</th></tr>").s(ctx.get(["stores"], false),ctx,{"block":body_1},{}).w("</table>");}body_0.__dustBody=!0;function body_1(chk,ctx){return chk.w("<tr><td>").f(ctx.get(["id"], false),ctx,"h").w("</td><td>").f(ctx.get(["alt"], false),ctx,"h").w("</td><td>").f(ctx.get(["url"], false),ctx,"h").w("</td><td>").f(ctx.get(["name"], false),ctx,"h").w("</td><td>").f(ctx.get(["phone"], false),ctx,"h").w("</td><td>Monday: ").f(ctx.get(["monday"], false),ctx,"h").w("<br>Tuesday: ").f(ctx.get(["tuesday"], false),ctx,"h").w(" <br>Wednseday: ").f(ctx.get(["wednesday"], false),ctx,"h").w("<br> Thursday: ").f(ctx.get(["thursday"], false),ctx,"h").w("<br> Friday: ").f(ctx.get(["friday"], false),ctx,"h").w("<br>Saturday: ").f(ctx.get(["saturday"], false),ctx,"h").w("<br>Sunday: ").f(ctx.get(["sunday"], false),ctx,"h").w("</td><td>").f(ctx.get(["type"], false),ctx,"h").w("</td><td>").f(ctx.get(["address"], false),ctx,"h").w("</td><td>").f(ctx.get(["city"], false),ctx,"h").w("</td><td>").f(ctx.get(["state"], false),ctx,"h").w("</td><td>").f(ctx.get(["zip"], false),ctx,"h").w("</td><td>").f(ctx.get(["lat"], false),ctx,"h").w("/").f(ctx.get(["lon"], false),ctx,"h").w("</td></tr>");}body_1.__dustBody=!0;return body_0;})();module.exports = function (context, callback) { dust.render("app/templates/dataView", context, callback); };
 }).call(this);
 
-},{"dustjs-linkedin":13}],5:[function(require,module,exports){
+},{"dustjs-linkedin":14}],5:[function(require,module,exports){
 (function() {
 var dust = require('dustjs-linkedin');
 (function(){dust.register("app/templates/inputView",body_0);function body_0(chk,ctx){return chk.w("<h1>Upload your CSV file here!</h1><form id=\"upload\"><input type=\"file\" class=\"file-upload\" id=\"csv\"/><button class=\"do-upload\">Parse My file</button> <div class=\"working\">Working...</div></form>");}body_0.__dustBody=!0;return body_0;})();module.exports = function (context, callback) { dust.render("app/templates/inputView", context, callback); };
 }).call(this);
 
-},{"dustjs-linkedin":13}],6:[function(require,module,exports){
+},{"dustjs-linkedin":14}],6:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.0
 
@@ -1929,7 +1929,7 @@ var dust = require('dustjs-linkedin');
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":8,"underscore":10}],7:[function(require,module,exports){
+},{"jquery":9,"underscore":11}],7:[function(require,module,exports){
 (function (process,global){
 /* @preserve
  * The MIT License (MIT)
@@ -7037,7 +7037,382 @@ function isUndefined(arg) {
 },{}]},{},[4])(4)
 });                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":14}],8:[function(require,module,exports){
+},{"_process":16}],8:[function(require,module,exports){
+/*
+ CSV-JS - A Comma-Separated Values parser for JS
+
+ Built to rfc4180 standard, with options for adjusting strictness:
+    - optional carriage returns for non-microsoft sources
+    - automatically type-cast numeric an boolean values
+    - relaxed mode which: ignores blank lines, ignores gargabe following quoted tokens, does not enforce a consistent record length
+
+ Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ Author Greg Kindel (twitter @gkindel), 2014
+ */
+
+(function (global) {
+    'use strict';
+    /**
+     * @name CSV
+     * @namespace
+     */
+    // implemented as a singleton because JS is single threaded
+    var CSV = {};
+    CSV.RELAXED = false;
+    CSV.IGNORE_RECORD_LENGTH = false;
+    CSV.IGNORE_QUOTES = false;
+    CSV.LINE_FEED_OK = true;
+    CSV.CARRIAGE_RETURN_OK = true;
+    CSV.DETECT_TYPES = true;
+    CSV.IGNORE_QUOTE_WHITESPACE = true;
+    CSV.DEBUG = false;
+
+    CSV.COLUMN_SEPARATOR = ",";
+
+    CSV.ERROR_EOF = "UNEXPECTED_END_OF_FILE";
+    CSV.ERROR_CHAR = "UNEXPECTED_CHARACTER";
+    CSV.ERROR_EOL = "UNEXPECTED_END_OF_RECORD";
+    CSV.WARN_SPACE = "UNEXPECTED_WHITESPACE"; // not per spec, but helps debugging
+
+    var QUOTE = "\"",
+        CR = "\r",
+        LF = "\n",
+        SPACE = " ",
+        TAB = "\t";
+
+    // states
+    var PRE_TOKEN = 0,
+        MID_TOKEN = 1,
+        POST_TOKEN = 2,
+        POST_RECORD = 4;
+    /**
+     * @name CSV.parse
+     * @function
+     * @description rfc4180 standard csv parse
+     * with options for strictness and data type conversion
+     * By default, will automatically type-cast numeric an boolean values.
+     * @param {String} str A CSV string
+     * @return {Array} An array records, each of which is an array of scalar values.
+     * @example
+     * // simple
+     * var rows = CSV.parse("one,two,three\nfour,five,six")
+     * // rows equals [["one","two","three"],["four","five","six"]]
+     * @example
+     * // Though not a jQuery plugin, it is recommended to use with the $.ajax pipe() method:
+     * $.get("csv.txt")
+     *    .pipe( CSV.parse )
+     *    .done( function(rows) {
+     *        for( var i =0; i < rows.length; i++){
+     *            console.log(rows[i])
+     *        }
+     *  });
+     * @see http://www.ietf.org/rfc/rfc4180.txt
+     */
+    CSV.parse = function (str) {
+        var result = CSV.result = [];
+        CSV.offset = 0;
+        CSV.str = str;
+        CSV.record_begin();
+
+        CSV.debug("parse()", str);
+
+        var c;
+        while( 1 ){
+            // pull char
+            c = str[CSV.offset++];
+            CSV.debug("c", c);
+
+            // detect eof
+            if (c == null) {
+                if( CSV.escaped )
+                    CSV.error(CSV.ERROR_EOF);
+
+                if( CSV.record ){
+                    CSV.token_end();
+                    CSV.record_end();
+                }
+
+                CSV.debug("...bail", c, CSV.state, CSV.record);
+                CSV.reset();
+                break;
+            }
+
+            if( CSV.record == null ){
+                // if relaxed mode, ignore blank lines
+                if( CSV.RELAXED && (c == LF || c == CR && str[CSV.offset + 1] == LF) ){
+                    continue;
+                }
+                CSV.record_begin();
+            }
+
+            // pre-token: look for start of escape sequence
+            if (CSV.state == PRE_TOKEN) {
+
+                if ( (c === SPACE || c === TAB) && CSV.next_nonspace() == QUOTE ){
+                    if( CSV.RELAXED || CSV.IGNORE_QUOTE_WHITESPACE ) {
+                        continue;
+                    }
+                    else {
+                        // not technically an error, but ambiguous and hard to debug otherwise
+                        CSV.warn(CSV.WARN_SPACE);
+                    }
+                }
+
+                if (c == QUOTE && ! CSV.IGNORE_QUOTES) {
+                    CSV.debug("...escaped start", c);
+                    CSV.escaped = true;
+                    CSV.state = MID_TOKEN;
+                    continue;
+                }
+                CSV.state = MID_TOKEN;
+            }
+
+            // mid-token and escaped, look for sequences and end quote
+            if (CSV.state == MID_TOKEN && CSV.escaped) {
+                if (c == QUOTE) {
+                    if (str[CSV.offset] == QUOTE) {
+                        CSV.debug("...escaped quote", c);
+                        CSV.token += QUOTE;
+                        CSV.offset++;
+                    }
+                    else {
+                        CSV.debug("...escaped end", c);
+                        CSV.escaped = false;
+                        CSV.state = POST_TOKEN;
+                    }
+                }
+                else {
+                    CSV.token += c;
+                    CSV.debug("...escaped add", c, CSV.token);
+                }
+                continue;
+            }
+
+            // fall-through: mid-token or post-token, not escaped
+            if (c == CR ) {
+                if( str[CSV.offset] == LF  )
+                    CSV.offset++;
+                else if( ! CSV.CARRIAGE_RETURN_OK )
+                    CSV.error(CSV.ERROR_CHAR);
+                CSV.token_end();
+                CSV.record_end();
+            }
+            else if (c == LF) {
+                if( ! (CSV.LINE_FEED_OK || CSV.RELAXED) )
+                    CSV.error(CSV.ERROR_CHAR);
+                CSV.token_end();
+                CSV.record_end();
+            }
+            else if (c == CSV.COLUMN_SEPARATOR) {
+                CSV.token_end();
+            }
+            else if( CSV.state == MID_TOKEN ){
+                CSV.token += c;
+                CSV.debug("...add", c, CSV.token);
+            }
+            else if ( c === SPACE || c === TAB) {
+                if (! CSV.IGNORE_QUOTE_WHITESPACE )
+                    CSV.error(CSV.WARN_SPACE );
+            }
+            else if( ! CSV.RELAXED ){
+                CSV.error(CSV.ERROR_CHAR);
+            }
+        }
+        return result;
+    };
+
+    /**
+     * @name CSV.stream
+     * @function
+     * @description stream a CSV file
+     * @example
+     * node -e "c=require('CSV-JS');require('fs').createReadStream('csv.txt').pipe(c.stream()).pipe(c.stream.json()).pipe(process.stdout)"
+     */
+    CSV.stream = function () {
+        var s = new require('stream').Transform({objectMode: true});
+        s.EOL = '\n';
+        s.prior = "";
+        s.emitter = function(s) {
+            return function(e) {
+                s.push(CSV.parse(e+s.EOL))
+            }
+        }(s);
+
+        s._transform = function(chunk, encoding, done) {
+            var lines = (this.prior == "") ?
+                chunk.toString().split(this.EOL) :
+                (this.prior + chunk.toString()).split(this.EOL);
+            this.prior = lines.pop();
+            lines.forEach(this.emitter);
+            done()
+        };
+
+        s._flush = function(done) {
+            if (this.prior != "") {
+                this.emitter(this.prior)
+                this.prior = ""
+            }
+            done()
+        };
+        return s
+    };
+
+    CSV.stream.json = function () {
+        var s = new require('stream').Transform({objectMode: true});
+        s._transform = function(chunk, encoding, done) {
+            s.push(JSON.stringify(chunk.toString())+require('os').EOL);
+            done()
+        };
+        return s
+    };
+    
+    CSV.reset = function () {
+        CSV.state = null;
+        CSV.token = null;
+        CSV.escaped = null;
+        CSV.record = null;
+        CSV.offset = null;
+        CSV.result = null;
+        CSV.str = null;
+    };
+
+    CSV.next_nonspace = function () {
+        var i = CSV.offset;
+        var c;
+        while( i < CSV.str.length ) {
+            c = CSV.str[i++];
+            if( !( c == SPACE || c === TAB ) ){
+                return c;
+            }
+        }
+        return null;
+    };
+
+    CSV.record_begin = function () {
+        CSV.escaped = false;
+        CSV.record = [];
+        CSV.token_begin();
+        CSV.debug("record_begin");
+    };
+
+    CSV.record_end = function () {
+        CSV.state = POST_RECORD;
+        if( ! (CSV.IGNORE_RECORD_LENGTH || CSV.RELAXED) && CSV.result.length > 0 && CSV.record.length !=  CSV.result[0].length ){
+            CSV.error(CSV.ERROR_EOL);
+        }
+        CSV.result.push(CSV.record);
+        CSV.debug("record end", CSV.record);
+        CSV.record = null;
+    };
+
+    CSV.resolve_type = function (token) {
+        if( token.match(/^\d+(\.\d+)?$/) ){
+            token = parseFloat(token);
+        }
+        else if( token.match(/^(true|false)$/i) ){
+            token = Boolean( token.match(/true/i) );
+        }
+        else if(token === "undefined" ){
+            token = undefined;
+        }
+        else if(token === "null" ){
+            token = null;
+        }
+        return token;
+    };
+
+    CSV.token_begin = function () {
+        CSV.state = PRE_TOKEN;
+        // considered using array, but http://www.sitepen.com/blog/2008/05/09/string-performance-an-analysis/
+        CSV.token = "";
+    };
+
+    CSV.token_end = function () {
+        if( CSV.DETECT_TYPES ) {
+            CSV.token = CSV.resolve_type(CSV.token);
+        }
+        CSV.record.push(CSV.token);
+        CSV.debug("token end", CSV.token);
+        CSV.token_begin();
+    };
+
+    CSV.debug = function (){
+        if( CSV.DEBUG )
+            console.log(arguments);
+    };
+
+    CSV.dump = function (msg) {
+        return [
+            msg , "at char", CSV.offset, ":",
+            CSV.str.substr(CSV.offset- 50, 50)
+                .replace(/\r/mg,"\\r")
+                .replace(/\n/mg,"\\n")
+                .replace(/\t/mg,"\\t")
+        ].join(" ");
+    };
+
+    CSV.error = function (err){
+        var msg = CSV.dump(err);
+        CSV.reset();
+        throw msg;
+    };
+
+    CSV.warn = function (err){
+        var msg = CSV.dump(err);
+        try {
+            console.warn( msg );
+            return;
+        } catch (e) {}
+
+        try {
+            console.log( msg );
+        } catch (e) {}
+
+    };
+
+
+    // Node, PhantomJS, etc
+    // eg.  var CSV = require("CSV"); CSV.parse(...);
+    if ( typeof module != 'undefined' && module.exports) {
+        module.exports = CSV;
+        return;
+    }
+
+    // CommonJS http://wiki.commonjs.org/wiki/Modules
+    // eg.  var CSV = require("CSV"); CSV.parse(...);
+    else if (typeof exports != 'undefined' ) {
+        exports.CSV = CSV;
+    }
+
+    // AMD https://github.com/amdjs/amdjs-api/wiki/AMD
+    // eg.  require(['./csv.js'], function (CSV) { CSV.parse(...); } );
+    else if (typeof define == 'function' && typeof define.amd == 'object'){
+        define([], function () {
+            return CSV;
+        });
+        return;
+    }
+
+    // .. else global var
+    // eg. CSV.parse(...);
+    if( global ){
+        global.CSV = CSV;
+    }
+
+})(this);
+
+},{"os":15}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.11.1
  * http://jquery.com/
@@ -17347,7 +17722,7 @@ return jQuery;
 
 }));
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -29586,7 +29961,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -31136,7 +31511,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var $ = require('jquery');
 var _ = require('lodash');
 var Backbone = require('backbone');
@@ -31165,11 +31540,12 @@ var DataView = Backbone.View.extend({
 });
 
 module.exports = DataView;
-},{"../collections/Stores":1,"../templates/dataView.dust":4,"backbone":6,"jquery":8,"lodash":9}],12:[function(require,module,exports){
+},{"../collections/Stores":1,"../templates/dataView.dust":4,"backbone":6,"jquery":9,"lodash":10}],13:[function(require,module,exports){
 var $ = require('jquery');
 var _ = require('lodash');
 var Backbone = require('backbone');
 var Promise = require('bluebird');
+var CSV = require('csv-js');
 var inputTemplate = require('../templates/inputView.dust');
 var Stores = require('../collections/Stores');
 
@@ -31218,32 +31594,32 @@ var InputView = Backbone.View.extend({
   _parseCsvToObject: function (csvData) {
     return new Promise(function (resolve) {
       // Resolve with the parsed objects
-      resolve(csvData.split("\n")
+      debugger;
+      resolve(CSV.parse(csvData)
         .map(function (e, i, a) {
           // Skip the first entry
           if (i < 1) {
             return undefined
           }
           // Split into parts and return an object with each of the attributes
-          var info = e.split(',');
           return {
-            id: info[0],
-            alt: info[1],
-            url: info[2],
-            name: info[3],
-            phone: info[4],
-            monday: info[5],
-            tuesday: info[6],
-            wednesday: info[7],
-            thursday: info[8],
-            friday: info[9],
-            saturday: info[10],
-            sunday: info[11],
-            type: info[12],
-            address: info[13],
-            city: info[14],
-            state: info[15],
-            zip: info[16]
+            id: e[0],
+            alt: e[1],
+            url: e[2],
+            name: e[3],
+            phone: e[4],
+            monday: e[5],
+            tuesday: e[6],
+            wednesday: e[7],
+            thursday: e[8],
+            friday: e[9],
+            saturday: e[10],
+            sunday: e[11],
+            type: e[12],
+            address: e[13],
+            city: e[14],
+            state: e[15],
+            zip: e[16]
           };
         })
         .filter(function (e, i, a) {
@@ -31301,7 +31677,7 @@ var InputView = Backbone.View.extend({
 });
 
 module.exports = InputView;
-},{"../collections/Stores":1,"../templates/inputView.dust":5,"backbone":6,"bluebird":7,"jquery":8,"lodash":9}],13:[function(require,module,exports){
+},{"../collections/Stores":1,"../templates/inputView.dust":5,"backbone":6,"bluebird":7,"csv-js":8,"jquery":9,"lodash":10}],14:[function(require,module,exports){
 (function (process){
 (function (root, factory) {
   /*global define*/
@@ -32416,7 +32792,54 @@ module.exports = InputView;
 }));
 
 }).call(this,require('_process'))
-},{"_process":14}],14:[function(require,module,exports){
+},{"_process":16}],15:[function(require,module,exports){
+exports.endianness = function () { return 'LE' };
+
+exports.hostname = function () {
+    if (typeof location !== 'undefined') {
+        return location.hostname
+    }
+    else return '';
+};
+
+exports.loadavg = function () { return [] };
+
+exports.uptime = function () { return 0 };
+
+exports.freemem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.totalmem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.cpus = function () { return [] };
+
+exports.type = function () { return 'Browser' };
+
+exports.release = function () {
+    if (typeof navigator !== 'undefined') {
+        return navigator.appVersion;
+    }
+    return '';
+};
+
+exports.networkInterfaces
+= exports.getNetworkInterfaces
+= function () { return {} };
+
+exports.arch = function () { return 'javascript' };
+
+exports.platform = function () { return 'browser' };
+
+exports.tmpdir = exports.tmpDir = function () {
+    return '/tmp';
+};
+
+exports.EOL = '\n';
+
+},{}],16:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

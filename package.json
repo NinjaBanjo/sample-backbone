@@ -29,6 +29,7 @@
     "backbone": "./app/vendor/backbone/backbone.js",
     "lodash": "./app/vendor/lodash/lodash.js",
     "underscore": "./app/vendor/underscore/underscore.js",
-    "bluebird": "./app/vendor/bluebird/js/browser/bluebird.js"
+    "bluebird": "./app/vendor/bluebird/js/browser/bluebird.js",
+    "csv-js": "./app/vendor/csv-js/csv.js"
   }
 }

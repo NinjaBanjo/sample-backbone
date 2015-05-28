@@ -2,6 +2,7 @@ var $ = require('jquery');
 var _ = require('lodash');
 var Backbone = require('backbone');
 var Promise = require('bluebird');
+var CSV = require('csv-js');
 var inputTemplate = require('../templates/inputView.dust');
 var Stores = require('../collections/Stores');
 
@@ -50,32 +51,32 @@ var InputView = Backbone.View.extend({
   _parseCsvToObject: function (csvData) {
     return new Promise(function (resolve) {
       // Resolve with the parsed objects
-      resolve(csvData.split("\n")
+      debugger;
+      resolve(CSV.parse(csvData)
         .map(function (e, i, a) {
           // Skip the first entry
           if (i < 1) {
             return undefined
           }
           // Split into parts and return an object with each of the attributes
-          var info = e.split(',');
           return {
-            id: info[0],
-            alt: info[1],
-            url: info[2],
-            name: info[3],
-            phone: info[4],
-            monday: info[5],
-            tuesday: info[6],
-            wednesday: info[7],
-            thursday: info[8],
-            friday: info[9],
-            saturday: info[10],
-            sunday: info[11],
-            type: info[12],
-            address: info[13],
-            city: info[14],
-            state: info[15],
-            zip: info[16]
+            id: e[0],
+            alt: e[1],
+            url: e[2],
+            name: e[3],
+            phone: e[4],
+            monday: e[5],
+            tuesday: e[6],
+            wednesday: e[7],
+            thursday: e[8],
+            friday: e[9],
+            saturday: e[10],
+            sunday: e[11],
+            type: e[12],
+            address: e[13],
+            city: e[14],
+            state: e[15],
+            zip: e[16]
           };
         })
         .filter(function (e, i, a) {

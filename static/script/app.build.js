@@ -31557,13 +31557,13 @@ var InputView = Backbone.View.extend({
   },
   _getGeoLocationForObjects: function (objects) {
     return new Promise(function (resolve) {
-      // Do geo stuff here
       var Geocoder = new google.maps.Geocoder;
-      // we use map so it only runs one at a time and cuncurrency so it waits for the previous before calling the next one
+      // we use map so it only runs one at a time and cuncurrency
+      // so it waits for the previous before calling the next one
       Promise.map(objects, function (item) {
         return new Promise(function (resolve) {
           var callTime = new Date(),
-            finishTime = new Date(callTime.getTime() + 0.12 * 60000),
+            finishTime = new Date(callTime.getTime() + 0.15 * 60000),
             address = item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip;
           Geocoder.geocode({address: address}, function (result) {
             if (result !== null && typeof result[0] !== "undefined") {
@@ -31594,7 +31594,6 @@ var InputView = Backbone.View.extend({
   _parseCsvToObject: function (csvData) {
     return new Promise(function (resolve) {
       // Resolve with the parsed objects
-      debugger;
       resolve(CSV.parse(csvData)
         .map(function (e, i, a) {
           // Skip the first entry

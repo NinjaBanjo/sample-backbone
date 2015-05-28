@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', 'browserify', 'less');
+  grunt.registerTask('default', 'browserify:dist');
   grunt.registerTask('run', ['default', 'watch']);
 
   grunt.loadNpmTasks('grunt-browserify');

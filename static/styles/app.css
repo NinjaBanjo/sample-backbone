@@ -4,3 +4,7 @@ body {
 .app {
   margin: 1em 2em;
 }
+h2 {
+  display: inline-block;
+  margin-right: .8em;
+}

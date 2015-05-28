@@ -18,7 +18,9 @@ var Store = Backbone.Model.extend({
     address: undefined,
     city: undefined,
     state: undefined,
-    zip: undefined
+    zip: undefined,
+    lat: undefined,
+    lon: undefined
   }
 });
 

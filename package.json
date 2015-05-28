@@ -28,6 +28,7 @@
     "jquery": "./app/vendor/jquery/dist/jquery.js",
     "backbone": "./app/vendor/backbone/backbone.js",
     "lodash": "./app/vendor/lodash/lodash.js",
-    "underscore": "./app/vendor/underscore/underscore.js"
+    "underscore": "./app/vendor/underscore/underscore.js",
+    "bluebird": "./app/vendor/bluebird/js/browser/bluebird.js"
   }
 }

@@ -1,12 +1,46 @@
 var $ = require('jquery');
+var _ = require('lodash');
 var Backbone = require('backbone');
+var Promise = require('bluebird');
 var inputTemplate = require('../templates/inputView.dust');
 var Stores = require('../collections/Stores');
 
 var InputView = Backbone.View.extend({
-  _parseCsvToArray: function (csvData) {
-    Stores.reset(
-      csvData.split("\n")
+  _getGeoLocationForObjects: function (objects) {
+    return new Promise(function (resolve) {
+      // Do geo stuff here
+      var Geocoder = new google.maps.Geocoder;
+      // we use map so it only runs one at a time and cuncurrency so it waits for the previous before calling the next one
+      Promise.map(objects, function (item) {
+        return new Promise(function (resolve) {
+          var address = item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip;
+          Promise.delay(1000)
+            .then(function () {
+              Geocoder.geocode({address: address}, function (result) {
+                if (result !== null && typeof result[0] !== "undefined") {
+                  item.lat = result[0].geometry.location.A;
+                  item.lon = result[0].geometry.location.F;
+                } else {
+                  item.lat = null;
+                  item.lon = null;
+                }
+                resolve(item);
+              });
+            });
+        });
+      }, {concurrency: 1})
+        .then(function (processedObjects) {
+          resolve(processedObjects);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    });
+  },
+  _parseCsvToObject: function (csvData) {
+    return new Promise(function (resolve) {
+      // Resolve with the parsed objects
+      resolve(csvData.split("\n")
         .map(function (e, i, a) {
           // Skip the first entry
           if (i < 1) {
@@ -36,17 +70,19 @@ var InputView = Backbone.View.extend({
         })
         .filter(function (e, i, a) {
           return !(typeof e === "undefined");
-        })
-    );
+        }));
+    });
   },
   _readFileText: function (file, cb) {
-    var fileReader = new FileReader();
+    return new Promise(function (resolve) {
+      var fileReader = new FileReader();
 
-    fileReader.onload = function () {
-      cb(fileReader.result);
-    };
+      fileReader.onload = function () {
+        resolve(fileReader.result);
+      };
 
-    fileReader.readAsText(file);
+      fileReader.readAsText(file);
+    });
   },
   tagName: 'div',
   el: $('.input-container'),
@@ -67,9 +103,12 @@ var InputView = Backbone.View.extend({
       return;
     }
     // Call to our capture function and pass it the form file=
-    this._readFileText(file, function (csvData) {
-      this._parseCsvToArray(csvData);
-    }.bind(this));
+    this._readFileText(file)
+      .then(this._parseCsvToObject)
+      .then(this._getGeoLocationForObjects)
+      .then(function(result){
+        StorZ
+      });
 
   },
   render: function () {

@@ -1,0 +1,23 @@
+{
+  "name": "sample-backbone",
+  "version": "0.0.0",
+  "homepage": "https://github.com/NinjaBanjo/sample-backbone",
+  "authors": [
+    "Derek Persons <derek.persons@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.0",
+    "bluebird": "~2.9.26",
+    "jquery": "1.11.1",
+    "lodash": "~3.9.3"
+  }
+}

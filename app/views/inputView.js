@@ -20,7 +20,7 @@ var InputView = Backbone.View.extend({
       Promise.map(objects, function (item) {
         return new Promise(function (resolve) {
           var callTime = new Date(),
-            finishTime = new Date(callTime.getTime() + 0.15 * 60000),
+            finishTime = new Date(callTime.getTime() + 0.2 * 60000),
             address = item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip;
           Geocoder.geocode({address: address}, function (result) {
             if (result !== null && typeof result[0] !== "undefined") {
@@ -91,7 +91,7 @@ var InputView = Backbone.View.extend({
         resolve(fileReader.result);
       };
 
-      fileReader.readAsText(file);
+      fileReader.readAsText(file, 'utf8');
     });
   },
   doUpload: function (e) {

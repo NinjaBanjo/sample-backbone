@@ -19,6 +19,7 @@
     "bluebird": "~2.9.26",
     "jquery": "1.11.1",
     "lodash": "~3.9.3",
-    "csv-js": "~1.1.1"
+    "csv-js": "~1.1.1",
+    "dustjs-linkedin": "~2.7.1"
   }
 }

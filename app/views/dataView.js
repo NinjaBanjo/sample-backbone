@@ -21,7 +21,7 @@ var DataView = Backbone.View.extend({
     this.$el.html(html);
   },
   downloadURI: function() {
-    return this._buildDataURI(JSON.stringify(Stores.toJSON()));
+    return this._buildDataURI(unescape(encodeURIComponent(JSON.stringify(Stores.toJSON()))).replace('\r', '').replace('\n', ''));
   }
 });
 
